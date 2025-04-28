@@ -48,8 +48,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         trim: true,
-        enum:["male","female","other"],
-        default: "other"
+        enum:["male","female","other","prefer not to say"],
+        default: "prefer not to say"
             },
     profilePicture: {
         type: String,
@@ -73,9 +73,11 @@ const userSchema = new mongoose.Schema({
  
 }, { timestamps: true });
 
+userSchema.index({firstName: 1, lastName: 1});
+
 userSchema.methods.getJwtToken = async function () {
     const user = this;
-      const token = await jwt.sign({ id: user._id }, "Password@123",{ expiresIn: "1h" });
+      const token = await jwt.sign({ _id: user._id }, "Password@123",{ expiresIn: "1h" });
       return token;
 }  
 
