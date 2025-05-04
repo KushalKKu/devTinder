@@ -1,8 +1,8 @@
 const validator = require('validator');
 const validateSignUpData = (user) => {
-    const { firstName, lastName, email, password } = user;
+    const { firstName, lastName, emailId, password } = user;
 
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName || !lastName || !emailId || !password) {
         throw new Error("All fields are required");
     }
 
@@ -20,7 +20,7 @@ const validateSignUpData = (user) => {
         throw new Error("Password is not strong enough, Password must have minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1");
     }
 
-    if (!validator.isEmail(email)) {
+    if (!validator.isEmail(emailId)) {
         throw new Error("Invalid email address");
     }
 };
