@@ -20,7 +20,6 @@ userRouter.get("/user/requests/received", userAuth, async (req, res) => {
     }
 
     res.send({
-      message: `${userLoggedIn.firstName} ${userLoggedIn.lastName} has received ${connectionRequest.length} connection requests`,
       data: connectionRequest,
     });
   } catch (err) {
