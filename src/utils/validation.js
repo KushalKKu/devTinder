@@ -1,6 +1,6 @@
 const validator = require('validator');
 const validateSignUpData = (user) => {
-    const { firstName, lastName, emailId, password } = user;
+    const { firstName, lastName, emailId, password } = user.body;
 
     if (!firstName || !lastName || !emailId || !password) {
         throw new Error("All fields are required");
