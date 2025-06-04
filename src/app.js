@@ -4,6 +4,7 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+require("dotenv").config();
 // Middleware - Proper order is crucial
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -46,7 +47,7 @@ app.use("/", userRouter);
 // Database connection
 connectDB().then(() => {    
     console.log("MongoDB connected successfully");
-    app.listen(7777, () => {
+    app.listen(process.env.PORT, () => {
         console.log("Server is running on port 7777");
     });
 }).catch((err) => {
