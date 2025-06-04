@@ -33,6 +33,7 @@ app.use((req, res, next) => {
   next();
 });
 
+//testing for .env
 // Routes
 const authRouter = require("./routes/auth");
 const profileRouter = require("./routes/profile");   
